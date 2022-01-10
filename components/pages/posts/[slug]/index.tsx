@@ -1,0 +1,157 @@
+import { Post } from '.contentlayer/types';
+import {
+  Box,
+  Grid,
+  Heading,
+  HStack,
+  Link,
+  SlideFade,
+  Text,
+  VStack,
+} from '@chakra-ui/react';
+import TableOfContents from 'components/table-of-contents';
+import siteConfig from 'config/site';
+import { NextPage } from 'next';
+import { NextSeo } from 'next-seo';
+import { DateTime } from 'luxon';
+import dynamic from 'next/dynamic';
+import NextLink from 'next/link';
+import { useMDXComponent } from 'next-contentlayer/hooks';
+
+const Callout = dynamic(
+  () => import(/* webpackChunkName: "Callout" */ 'components/mdx/callout')
+);
+
+const Image = dynamic(
+  () => import(/* webpackChunkName: "Image" */ 'components/mdx/image')
+);
+
+const components = { Callout, img: Image };
+
+interface IProps {
+  post: Post;
+  nextPosts: Post[];
+}
+
+const SocialShare = dynamic(
+  () => import(/* webpackChunkName: "SocialShare" */ 'components/social-share'),
+  {
+    ssr: false,
+  }
+);
+const Posts = dynamic(
+  () => import(/* webpackChunkName: "Posts" */ 'components/layouts/posts')
+);
+
+const Page: NextPage<IProps> = ({ post, nextPosts }) => {
+  const MDXContent = useMDXComponent(post.body.code);
+
+  const publishedMetaNode = () => {
+    return (
+      <>
+        <HStack spacing={1} isInline alignItems="center">
+          <Text fontSize="sm">Published on</Text>
+          <Text fontSize="sm" fontWeight="bold">
+            {DateTime.fromISO(post.date).toLocaleString(DateTime.DATE_MED)}
+          </Text>
+        </HStack>
+        {/* <HStack spacing={2} isInline alignItems="center">
+          <Text fontSize="sm">Updated on</Text>
+          <Text fontSize="sm" fontWeight="bold">
+            {DateTime.fromISO(post.lastmod).toLocaleString(DateTime.DATE_MED)}
+          </Text>
+        </HStack> */}
+      </>
+    );
+  };
+
+  const tagsNode = () => {
+    return (
+      <HStack spacing={2} isInline alignItems="center">
+        {post.tags.map((tag, index) => {
+          return (
+            <NextLink key={index} href={`/tags/${tag}`}>
+              <Link fontSize="sm" px={4} py={2} bg="gray.800" _hover={{}}>
+                # {tag}
+              </Link>
+            </NextLink>
+          );
+        })}
+      </HStack>
+    );
+  };
+
+  const titleNode = () => {
+    return (
+      <Heading as="h1" size="2xl" lineHeight="base">
+        {post.title}
+      </Heading>
+    );
+  };
+
+  // const relatedPostsNode = () => {
+  //   return <Posts posts={nextPosts.slice(0, 5)} heading="Related posts" />;
+  // };
+
+  return (
+    <SlideFade in>
+      <NextSeo
+        title={`${post.title}`}
+        description={post.description}
+        openGraph={{
+          url: `${siteConfig.details.url}`,
+          title: `${post.title}`,
+          description: post.description,
+          images: [
+            {
+              url: `https://cover-images.vercel.app/api?postTitle=${post.title}&postDescription=${post.description}&backgroundColor=1a202c&foregroundColor=fff&authorAvatar=${siteConfig.details.url}${siteConfig.assets.favicon}&authorName=${siteConfig.details.title}`,
+              width: 1200,
+              height: 675,
+              alt: post.title,
+            },
+          ],
+          site_name: siteConfig.details.title,
+          type: 'post',
+          locale: 'en_IE',
+        }}
+      />
+      <Box>
+        <Box maxW={['2xl', '2xl', '2xl', '6xl']} mx="auto" py={8} px={4}>
+          <Grid
+            templateColumns={['1fr', '1fr', '1fr', '2fr 1fr']}
+            gridGap={[0, 0, 0, 24]}
+          >
+            <Box maxW="100%" overflowX="hidden">
+              <VStack spacing={8} align="left">
+                <VStack spacing={2} align="left">
+                  <HStack justifyContent="space-between">
+                    {publishedMetaNode()}
+                    {tagsNode()}
+                  </HStack>
+                  {titleNode()}
+                </VStack>
+                <Box className="article">
+                  <MDXContent components={components} />
+                </Box>
+                {/* <Box pt={12}>{relatedPostsNode()}</Box> */}
+              </VStack>
+            </Box>
+            <VStack
+              spacing={8}
+              pos="sticky"
+              top={8}
+              h="100vh"
+              overflow="auto"
+              display={['none', 'none', 'none', 'block']}
+            >
+              <TableOfContents source={post.body.raw} />
+              <SocialShare title={post.title} />
+            </VStack>
+          </Grid>
+        </Box>
+      </Box>
+    </SlideFade>
+  );
+};
+
+export default Page;
