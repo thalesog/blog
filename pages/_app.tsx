@@ -1,4 +1,5 @@
 import "@fontsource/inter";
+import "@fontsource/fira-code";
 import { Box } from "@chakra-ui/react";
 import siteConfig from "config/site";
 import { initGA } from "lib/google-analytics";

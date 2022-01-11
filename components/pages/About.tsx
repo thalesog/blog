@@ -36,8 +36,8 @@ const Page: FC = () => {
   const bioDescriptionNode = () => {
     return (
       <Box className="article">
-        <Text fontWeight="bold">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        <Text fontWeight="bold" textAlign="center">
+          Hi there, i{"'"}m Thales Ogliari, a developer from 🇧🇷
         </Text>
         <Text>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ut

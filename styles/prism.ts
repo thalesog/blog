@@ -305,6 +305,7 @@ const prismStyles = css`
    * 1. Make the element just wide enough to fit its content.
    * 2. Always fill the visible space in .code-highlight.
    */
+
   .code-highlight {
     float: left; /* 1 */
     min-width: 100%; /* 2 */

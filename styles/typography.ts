@@ -3,10 +3,16 @@ import { theme } from "@chakra-ui/react";
 
 const typographyStyles = css`
   // Headings
+  .article > h1,
   .article > h2,
   .article > h3,
   .article > h4 {
     font-weight: ${theme.fontWeights.bold};
+  }
+
+  .article > h1 {
+    padding: ${theme.space[8]} 0 ${theme.space[2]};
+    font-size: ${theme.fontSizes["4xl"]};
   }
 
   .article > h2 {
@@ -126,6 +132,7 @@ const typographyStyles = css`
   }
 
   // Headings
+  .article > h1,
   .article > h2,
   .article > h3,
   .article > h4 {

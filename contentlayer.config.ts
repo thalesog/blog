@@ -11,14 +11,23 @@ export const Post = defineDocumentType(() => ({
     description: { type: "string", required: true },
     date: { type: "date", required: true },
     draft: { type: "boolean", required: true },
-    categories: { type: "json", required: false },
     tags: { type: "json", required: false },
     keywords: { type: "json", required: false },
   },
 }));
 
+export const Page = defineDocumentType(() => ({
+  name: "Page",
+  filePathPattern: `pages/*.mdx`,
+  bodyType: "mdx",
+  fields: {
+    title: { type: "string", required: true },
+    slug: { type: "string", required: true },
+  },
+}));
+
 export default makeSource({
   contentDirPath: "data",
-  documentTypes: [Post],
+  documentTypes: [Post, Page],
   mdx: mdxOptions,
 });

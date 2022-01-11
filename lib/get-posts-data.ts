@@ -1,10 +1,10 @@
-import { allPosts } from '.contentlayer/data';
-import compact from 'lodash/compact';
-import filter from 'lodash/filter';
-import find from 'lodash/find';
-import flattenDeep from 'lodash/flattenDeep';
-import { ParsedUrlQuery } from 'querystring';
-import { Post } from '.contentlayer/types';
+import { allPosts } from ".contentlayer/data";
+import compact from "lodash/compact";
+import filter from "lodash/filter";
+import find from "lodash/find";
+import flattenDeep from "lodash/flattenDeep";
+import { ParsedUrlQuery } from "querystring";
+import { Post } from ".contentlayer/types";
 
 export const getCurrentPost = (params: ParsedUrlQuery | undefined) => {
   const currentPost = find(allPosts, (article) => {
@@ -22,21 +22,12 @@ export const getAllPosts = () => {
 
 export const getAllPostsWhichBelongToCurrentSlug = (
   params: ParsedUrlQuery | undefined,
-  type: 'categories' | 'tags'
+  type: "categories" | "tags"
 ) => {
   const allPosts = getAllPosts();
 
   switch (type) {
-    case 'categories':
-      const allPostsFromThisCategory = filter(allPosts, (article) => {
-        return article.categories.includes(params?.slug);
-      });
-
-      return compact(
-        flattenDeep(allPostsFromThisCategory)
-      ) as unknown as Post[];
-
-    case 'tags':
+    case "tags":
       const allPostsFromThisTag = filter(allPosts, (article) => {
         return article.tags.includes(params?.slug);
       });
