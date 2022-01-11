@@ -19,7 +19,7 @@
     "@fontsource/fira-code": "^4.5.2",
     "@fontsource/inter": "^4.5.1",
     "contentlayer": "^0.0.33",
-    "framer-motion": "^5.5.6",
+    "framer-motion": "^5.5.7",
     "ga-4-react": "^0.1.281",
     "github-slugger": "^1.4.0",
     "lodash": "^4.17.21",
