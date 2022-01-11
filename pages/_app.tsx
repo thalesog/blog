@@ -1,21 +1,23 @@
-import { Box } from '@chakra-ui/react';
-import siteConfig from 'config/site';
-import { initGA } from 'lib/google-analytics';
-import isProduction from 'lib/is-production';
-import { NextSeo } from 'next-seo';
-import { AppProps } from 'next/app';
-import dynamic from 'next/dynamic';
-import Head from 'next/head';
-import { useEffect } from 'react';
+import "@fontsource/inter";
+import { Box } from "@chakra-ui/react";
+import siteConfig from "config/site";
+import { initGA } from "lib/google-analytics";
+import isProduction from "lib/is-production";
+import { NextSeo } from "next-seo";
+import { AppProps } from "next/app";
+import dynamic from "next/dynamic";
+import Head from "next/head";
+import { useEffect } from "react";
 
-const Layout = dynamic(
-  () => import(/* webpackChunkName: "Layouts" */ 'components/layouts')
+const MainLayout = dynamic(
+  () =>
+    import(/* webpackChunkName: "MainLayout" */ "components/layouts/MainLayout")
 );
 const Navbar = dynamic(
-  () => import(/* webpackChunkName: "Navbar" */ 'components/navbar')
+  () => import(/* webpackChunkName: "Navbar" */ "components/Navbar")
 );
 const Footer = dynamic(
-  () => import(/* webpackChunkName: "Footer" */ 'components/footer')
+  () => import(/* webpackChunkName: "Footer" */ "components/Footer")
 );
 
 const PortfolioApp = ({ Component, pageProps }: AppProps) => {
@@ -26,7 +28,7 @@ const PortfolioApp = ({ Component, pageProps }: AppProps) => {
   }, []);
 
   return (
-    <Layout>
+    <MainLayout>
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href={siteConfig.assets.favicon} type="image/png" />
@@ -37,7 +39,7 @@ const PortfolioApp = ({ Component, pageProps }: AppProps) => {
         twitter={{
           handle: siteConfig.socialLinks.twitter,
           site: siteConfig.socialLinks.twitter,
-          cardType: 'summary_large_image',
+          cardType: "summary_large_image",
         }}
         openGraph={{
           url: siteConfig.details.url,
@@ -52,8 +54,8 @@ const PortfolioApp = ({ Component, pageProps }: AppProps) => {
             },
           ],
           site_name: siteConfig.details.title,
-          type: 'website',
-          locale: 'pt_BR',
+          type: "website",
+          locale: "en_US",
         }}
       />
       <Navbar />
@@ -61,7 +63,7 @@ const PortfolioApp = ({ Component, pageProps }: AppProps) => {
         <Component {...pageProps} />
       </Box>
       <Footer />
-    </Layout>
+    </MainLayout>
   );
 };
 

@@ -1,5 +1,5 @@
-import { Avatar, Box, Grid, Heading, Text, VStack } from '@chakra-ui/react';
-import React, { FC } from 'react';
+import { Avatar, Box, Grid, Heading, Text, VStack } from "@chakra-ui/react";
+import React, { FC } from "react";
 
 const Page: FC = () => {
   const headingNode = () => {
@@ -13,7 +13,7 @@ const Page: FC = () => {
           h={100}
         >
           <Avatar
-            src={'http://github.com/thalesog.png'}
+            src={"http://github.com/thalesog.png"}
             alt="Thales Ogliari"
             height={100}
             width={100}

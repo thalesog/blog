@@ -1,24 +1,18 @@
-import { Box, SlideFade, VStack } from '@chakra-ui/react';
-import dynamic from 'next/dynamic';
-import React, { FC } from 'react';
-import Project from 'types/project';
-import Publication from 'types/publication';
-import { Post } from '.contentlayer/types';
+import { Box, SlideFade, VStack } from "@chakra-ui/react";
+import dynamic from "next/dynamic";
+import React, { FC } from "react";
+import Project from "types/project";
+import Publication from "types/publication";
+import { Post } from ".contentlayer/types";
 
 const Jumbotron = dynamic(
-  () =>
-    import(
-      /* webpackChunkName: "Jumbotron" */ 'components/pages/index/base/jumbotron'
-    )
+  () => import(/* webpackChunkName: "Jumbotron" */ "components/index/Jumbotron")
 );
 const Posts = dynamic(
-  () => import(/* webpackChunkName: "Posts" */ 'components/layouts/posts')
+  () => import(/* webpackChunkName: "Posts" */ "components/layouts/Posts")
 );
 const Projects = dynamic(
-  () =>
-    import(
-      /* webpackChunkName: "Projects" */ 'components/pages/index/base/projects'
-    )
+  () => import(/* webpackChunkName: "Projects" */ "components/index/Projects")
 );
 
 interface Props {

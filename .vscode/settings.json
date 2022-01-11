@@ -1,4 +1,6 @@
 {
   "[markdown]": {},
-  "frontMatter.preview.host": "http://localhost:3000/posts"
+  "frontMatter.preview.host": "http://localhost:3000/posts",
+  "frontMatter.content.fmHighlight": true,
+  "frontMatter.content.autoUpdateDate": false
 }

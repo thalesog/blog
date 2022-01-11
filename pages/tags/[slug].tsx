@@ -1,14 +1,14 @@
-import { Post } from '.contentlayer/types';
-import Page from 'components/pages/tags/base';
-import { getAllPostsWhichBelongToCurrentSlug } from 'lib/get-posts-data';
-import { getAllTags } from 'lib/get-tags-data';
-import pick from 'lodash/pick';
+import { Post } from ".contentlayer/types";
+import Page from "components/pages/Tags";
+import { getAllPostsWhichBelongToCurrentSlug } from "lib/get-posts-data";
+import { getAllTags } from "lib/get-tags-data";
+import pick from "lodash/pick";
 import {
   GetStaticPaths,
   GetStaticProps,
   GetStaticPropsContext,
   NextPage,
-} from 'next';
+} from "next";
 
 interface IProps {
   posts: Post[];
@@ -22,8 +22,8 @@ const TagsListingPage: NextPage<IProps> = ({ posts, currentTag }) => {
 export const getStaticProps: GetStaticProps = async ({
   params,
 }: GetStaticPropsContext) => {
-  const posts = getAllPostsWhichBelongToCurrentSlug(params, 'tags').map(
-    (posts) => pick(posts, ['date', 'description', 'title', 'slug'])
+  const posts = getAllPostsWhichBelongToCurrentSlug(params, "tags").map(
+    (posts) => pick(posts, ["date", "description", "title", "slug"])
   );
 
   return {

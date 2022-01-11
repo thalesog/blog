@@ -1,4 +1,4 @@
-import { Box, HStack, Link as _Link, Text, VStack } from "@chakra-ui/react";
+import { Box, HStack, Link, Text, VStack } from "@chakra-ui/react";
 import React, { FC } from "react";
 import { IoLogoGithub, IoMdEye } from "react-icons/io";
 
@@ -15,11 +15,11 @@ const Jumbotron: FC<IProps> = ({ description, githubLink, demoLink }) => {
     }
 
     return (
-      <_Link
+      <Link
         py={2}
         px={4}
         href={githubLink}
-        rounded="sm"
+        rounded="md"
         bg="gray.600"
         color="white"
         fontWeight="bold"
@@ -30,7 +30,7 @@ const Jumbotron: FC<IProps> = ({ description, githubLink, demoLink }) => {
           <Box as={IoLogoGithub} />
           <Box>View source</Box>
         </HStack>
-      </_Link>
+      </Link>
     );
   };
 
@@ -40,11 +40,11 @@ const Jumbotron: FC<IProps> = ({ description, githubLink, demoLink }) => {
     }
 
     return (
-      <_Link
+      <Link
         py={2}
         px={4}
         href={demoLink}
-        rounded="sm"
+        rounded="md"
         bg="blue.600"
         color="white"
         fontWeight="bold"
@@ -54,7 +54,7 @@ const Jumbotron: FC<IProps> = ({ description, githubLink, demoLink }) => {
           <Box as={IoMdEye} />
           <Box>View demo</Box>
         </HStack>
-      </_Link>
+      </Link>
     );
   };
 

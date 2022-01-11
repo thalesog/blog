@@ -40,7 +40,7 @@ const SocialShare: FC<IProps> = ({ title, url = window.location.href }) => {
               py={2}
               px={4}
               href={link.href}
-              rounded="sm"
+              rounded="md"
               bg={link.bg}
               isExternal
               _hover={{

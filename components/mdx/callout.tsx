@@ -28,7 +28,7 @@ const Callout: FC<IProps> = ({ type = "info", children }) => {
   return (
     <Box
       p={4}
-      rounded="sm"
+      rounded="md"
       bgColor={allowedTypes[type].bgColor}
       color={allowedTypes[type].color}
       mr={2}

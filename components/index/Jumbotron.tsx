@@ -1,7 +1,7 @@
-import { Box, Heading, VStack } from '@chakra-ui/react';
-import React, { FC } from 'react';
-import Image from 'next/image';
-import SubTitle from 'components/SubTitle';
+import { Box, Heading, VStack } from "@chakra-ui/react";
+import React, { FC } from "react";
+import Image from "next/image";
+import SubTitle from "components/SubTitle";
 
 const Jumbotron: FC = () => {
   return (

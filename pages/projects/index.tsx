@@ -1,4 +1,4 @@
-import Page from "components/pages/projects/base";
+import Page from "components/pages/Projects";
 import { getAllProjects } from "lib/get-projects-data";
 import { NextPage } from "next";
 import Head from "next/head";

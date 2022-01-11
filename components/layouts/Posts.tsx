@@ -4,23 +4,21 @@ import {
   Heading,
   HStack,
   Input,
-  Link as _Link,
   Text,
   VStack,
-} from '@chakra-ui/react';
-import { DateTime } from 'luxon';
-import Link from 'next/link';
-import { FC, FormEvent, useState } from 'react';
-import Publication from 'types/publication';
-import { Post } from '.contentlayer/types';
-import router from 'next/router';
-import { FaArrowRight } from 'react-icons/fa';
+} from "@chakra-ui/react";
+import { DateTime } from "luxon";
+import Link from "next/link";
+import { FC, FormEvent, useState } from "react";
+import Publication from "types/publication";
+import { Post } from ".contentlayer/types";
+import router from "next/router";
+import { FaArrowRight } from "react-icons/fa";
 
 interface Props {
   posts: (Post & Publication)[] | Post[];
   hideViewAllLinksNode?: boolean;
   currentTag?: string;
-  currentCategory?: string;
   heading?: string;
 }
 
@@ -28,10 +26,9 @@ const Posts: FC<Props> = ({
   posts = [],
   hideViewAllLinksNode = false,
   currentTag,
-  currentCategory,
   heading,
 }) => {
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState("");
 
   const sortedPosts = posts
     .sort(
@@ -49,7 +46,7 @@ const Posts: FC<Props> = ({
         variant="ghost"
         color="gray.300"
         rightIcon={<FaArrowRight />}
-        onClick={() => router.push('/posts')}
+        onClick={() => router.push("/posts")}
       >
         View all
       </Button>
@@ -64,7 +61,7 @@ const Posts: FC<Props> = ({
         <Input
           bg="gray.800"
           color="white"
-          borderRadius="sm"
+          borderRadius="md"
           border="none"
           value={searchQuery}
           onChange={(e: FormEvent<HTMLInputElement>) =>
@@ -84,19 +81,6 @@ const Posts: FC<Props> = ({
             Posts
           </Heading>
           <Text>Posts tagged with &quot;{currentTag}&quot;</Text>
-        </VStack>
-      );
-    }
-
-    if (!!currentCategory) {
-      return (
-        <VStack spacing={2} align="left">
-          <Heading as="h1" size="xl">
-            Posts
-          </Heading>
-          <Text>
-            Posts which belong to the &quot;{currentCategory}&quot; category
-          </Text>
         </VStack>
       );
     }

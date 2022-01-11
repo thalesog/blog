@@ -1,10 +1,10 @@
-import { Box, Grid, SlideFade } from '@chakra-ui/react';
-import dynamic from 'next/dynamic';
-import React, { FC } from 'react';
-import { Post } from '.contentlayer/types';
+import { Box, Grid, SlideFade } from "@chakra-ui/react";
+import dynamic from "next/dynamic";
+import React, { FC } from "react";
+import { Post } from ".contentlayer/types";
 
 const Posts = dynamic(
-  () => import(/* webpackChunkName: "Posts" */ 'components/layouts/posts')
+  () => import(/* webpackChunkName: "Posts" */ "components/layouts/Posts")
 );
 
 interface Props {

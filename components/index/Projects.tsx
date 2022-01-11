@@ -1,22 +1,15 @@
-import {
-  Box,
-  Button,
-  Heading,
-  Link as _Link,
-  Text,
-  VStack,
-} from '@chakra-ui/react';
-import { useRouter } from 'next/router';
-import { FC } from 'react';
-import { FaArrowRight } from 'react-icons/fa';
-import Project from 'types/project';
+import { Box, Button, Heading, Text, VStack } from "@chakra-ui/react";
+import { useRouter } from "next/router";
+import { FC } from "react";
+import { FaArrowRight } from "react-icons/fa";
+import Project from "types/project";
 
 interface Props {
   projects: Project[];
   hideViewAllLinksNode?: boolean;
 }
 
-const projects: FC<Props> = ({
+const Projects: FC<Props> = ({
   projects = [],
   hideViewAllLinksNode = false,
 }) => {
@@ -31,7 +24,7 @@ const projects: FC<Props> = ({
         variant="ghost"
         color="gray.300"
         rightIcon={<FaArrowRight />}
-        onClick={() => router.push('/projects')}
+        onClick={() => router.push("/projects")}
       >
         View all
       </Button>
@@ -84,4 +77,4 @@ const projects: FC<Props> = ({
   );
 };
 
-export default projects;
+export default Projects;

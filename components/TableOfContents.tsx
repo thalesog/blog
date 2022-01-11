@@ -1,5 +1,5 @@
-import { Button, Heading, VStack } from '@chakra-ui/react';
-import GithubSlugger from 'github-slugger';
+import { Button, Heading, VStack } from "@chakra-ui/react";
+import GithubSlugger from "github-slugger";
 import React, {
   Dispatch,
   FC,
@@ -7,7 +7,7 @@ import React, {
   useEffect,
   useRef,
   useState,
-} from 'react';
+} from "react";
 
 interface IProps {
   source: string;
@@ -54,11 +54,11 @@ const useIntersectionObserver = (
     };
 
     const observer = new IntersectionObserver(callback, {
-      rootMargin: '0px 0px -70% 0px',
+      rootMargin: "0px 0px -70% 0px",
     });
 
     const headingElements = Array.from(
-      document.querySelectorAll('.article h2, .article h3')
+      document.querySelectorAll(".article h2, .article h3")
     );
 
     headingElements.forEach((element) => observer.observe(element));
@@ -69,12 +69,12 @@ const useIntersectionObserver = (
 
 const TableOfContents: FC<IProps> = ({ source }) => {
   const headingLines = source
-    .split('\n')
+    .split("\n")
     .filter((line) => line.match(/^###*\s/));
 
   const headings = headingLines.map((raw) => {
-    const text = raw.replace(/^###*\s/, '');
-    const level = raw.slice(0, 3) === '###' ? 3 : 2;
+    const text = raw.replace(/^###*\s/, "");
+    const level = raw.slice(0, 3) === "###" ? 3 : 2;
     const slugger = new GithubSlugger();
 
     return {
@@ -102,18 +102,18 @@ const TableOfContents: FC<IProps> = ({ source }) => {
               fontSize="sm"
               pl={(heading.level - 2) * 4}
               _hover={{
-                color: 'blue.400',
+                color: "blue.400",
               }}
               _focus={{}}
               onClick={(e) => {
                 e.preventDefault();
                 document.querySelector(`#${heading.href}`).scrollIntoView({
-                  behavior: 'smooth',
-                  block: 'start',
-                  inline: 'nearest',
+                  behavior: "smooth",
+                  block: "start",
+                  inline: "nearest",
                 });
               }}
-              fontWeight={heading.href === activeId ? 'bold' : 'normal'}
+              fontWeight={heading.href === activeId ? "bold" : "normal"}
             >
               {heading.text}
             </Button>

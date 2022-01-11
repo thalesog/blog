@@ -1,10 +1,10 @@
-import { Post } from '.contentlayer/types';
-import Page from 'components/pages/posts/base';
-import { getAllPosts } from 'lib/get-posts-data';
-import { GetStaticProps, NextPage } from 'next';
-import Head from 'next/head';
-import publications from 'public/data/publications.json';
-import pick from 'lodash/pick';
+import { Post } from ".contentlayer/types";
+import Page from "components/pages/PostsList";
+import { getAllPosts } from "lib/get-posts-data";
+import { GetStaticProps, NextPage } from "next";
+import Head from "next/head";
+import publications from "public/data/publications.json";
+import pick from "lodash/pick";
 
 interface IProps {
   posts: Post[];
@@ -23,7 +23,7 @@ const PostsIndexPage: NextPage<IProps> = ({ posts }) => {
 
 export const getStaticProps: GetStaticProps = async () => {
   const posts = getAllPosts().map((posts) =>
-    pick(posts, ['date', 'description', 'title', 'slug'])
+    pick(posts, ["date", "description", "title", "slug"])
   );
 
   return {

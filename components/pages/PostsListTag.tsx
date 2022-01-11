@@ -1,29 +1,36 @@
-import { Post } from '.contentlayer/types';
+import { Post } from ".contentlayer/types";
 import {
+  Badge,
   Box,
+  Button,
+  Flex,
   Grid,
   Heading,
   HStack,
+  Icon,
   Link,
   SlideFade,
   Text,
   VStack,
-} from '@chakra-ui/react';
-import TableOfContents from 'components/table-of-contents';
-import siteConfig from 'config/site';
-import { NextPage } from 'next';
-import { NextSeo } from 'next-seo';
-import { DateTime } from 'luxon';
-import dynamic from 'next/dynamic';
-import NextLink from 'next/link';
-import { useMDXComponent } from 'next-contentlayer/hooks';
+} from "@chakra-ui/react";
+import TableOfContents from "components/TableOfContents";
+import siteConfig from "config/site";
+import { NextPage } from "next";
+import { NextSeo } from "next-seo";
+import { DateTime } from "luxon";
+import dynamic from "next/dynamic";
+import NextLink from "next/link";
+import { useMDXComponent } from "next-contentlayer/hooks";
+import { FaRegClock } from "react-icons/fa";
+import { MdUpdate, MdDateRange, MdPerson } from "react-icons/md";
+import { useRouter } from "next/router";
 
 const Callout = dynamic(
-  () => import(/* webpackChunkName: "Callout" */ 'components/mdx/callout')
+  () => import(/* webpackChunkName: "Callout" */ "components/mdx/callout")
 );
 
 const Image = dynamic(
-  () => import(/* webpackChunkName: "Image" */ 'components/mdx/image')
+  () => import(/* webpackChunkName: "Image" */ "components/mdx/image")
 );
 
 const components = { Callout, img: Image };
@@ -34,47 +41,50 @@ interface IProps {
 }
 
 const SocialShare = dynamic(
-  () => import(/* webpackChunkName: "SocialShare" */ 'components/social-share'),
+  () => import(/* webpackChunkName: "SocialShare" */ "components/SocialShare"),
   {
     ssr: false,
   }
 );
 const Posts = dynamic(
-  () => import(/* webpackChunkName: "Posts" */ 'components/layouts/posts')
+  () => import(/* webpackChunkName: "Posts" */ "components/layouts/Posts")
 );
 
 const Page: NextPage<IProps> = ({ post, nextPosts }) => {
+  const router = useRouter();
   const MDXContent = useMDXComponent(post.body.code);
-
   const publishedMetaNode = () => {
     return (
       <>
-        <HStack spacing={1} isInline alignItems="center">
-          <Text fontSize="sm">Published on</Text>
-          <Text fontSize="sm" fontWeight="bold">
-            {DateTime.fromISO(post.date).toLocaleString(DateTime.DATE_MED)}
-          </Text>
+        <HStack isInline spacing={1} alignItems="center">
+          <Flex me={3} alignItems="center">
+            <Icon me={1} as={MdDateRange} color="gray.400" />
+            <Text fontSize="sm" fontWeight="medium">
+              {DateTime.fromISO(post.date).toLocaleString(DateTime.DATE_MED)}
+            </Text>
+          </Flex>
         </HStack>
-        {/* <HStack spacing={2} isInline alignItems="center">
-          <Text fontSize="sm">Updated on</Text>
-          <Text fontSize="sm" fontWeight="bold">
-            {DateTime.fromISO(post.lastmod).toLocaleString(DateTime.DATE_MED)}
-          </Text>
-        </HStack> */}
       </>
     );
   };
 
   const tagsNode = () => {
     return (
-      <HStack spacing={2} isInline alignItems="center">
+      <HStack spacing={1} isInline alignItems="center">
         {post.tags.map((tag, index) => {
           return (
-            <NextLink key={index} href={`/tags/${tag}`}>
-              <Link fontSize="sm" px={4} py={2} bg="gray.800" _hover={{}}>
-                # {tag}
-              </Link>
-            </NextLink>
+            <Button
+              h={21}
+              fontSize={12}
+              key={index}
+              href={`/tags/${tag}`}
+              size="sm"
+              variant={"ghost"}
+              onClick={() => router.push(`/tags/${tag}`)}
+              textTransform="none"
+            >
+              #{tag}
+            </Button>
           );
         })}
       </HStack>
@@ -83,15 +93,15 @@ const Page: NextPage<IProps> = ({ post, nextPosts }) => {
 
   const titleNode = () => {
     return (
-      <Heading as="h1" size="2xl" lineHeight="base">
+      <Heading as="h1" size="2xl">
         {post.title}
       </Heading>
     );
   };
 
-  // const relatedPostsNode = () => {
-  //   return <Posts posts={nextPosts.slice(0, 5)} heading="Related posts" />;
-  // };
+  const relatedPostsNode = () => {
+    return <Posts posts={nextPosts.slice(0, 5)} heading="Related posts" />;
+  };
 
   return (
     <SlideFade in>
@@ -111,38 +121,38 @@ const Page: NextPage<IProps> = ({ post, nextPosts }) => {
             },
           ],
           site_name: siteConfig.details.title,
-          type: 'post',
-          locale: 'en_IE',
+          type: "post",
+          locale: "en_US",
         }}
       />
       <Box>
-        <Box maxW={['2xl', '2xl', '2xl', '6xl']} mx="auto" py={8} px={4}>
+        <Box maxW={["2xl", "2xl", "2xl", "6xl"]} mx="auto" py={8} px={4}>
           <Grid
-            templateColumns={['1fr', '1fr', '1fr', '2fr 1fr']}
+            templateColumns={["1fr", "1fr", "1fr", "2fr 1fr"]}
             gridGap={[0, 0, 0, 24]}
           >
             <Box maxW="100%" overflowX="hidden">
               <VStack spacing={8} align="left">
                 <VStack spacing={2} align="left">
+                  {titleNode()}
                   <HStack justifyContent="space-between">
                     {publishedMetaNode()}
                     {tagsNode()}
                   </HStack>
-                  {titleNode()}
                 </VStack>
                 <Box className="article">
                   <MDXContent components={components} />
                 </Box>
-                {/* <Box pt={12}>{relatedPostsNode()}</Box> */}
+                <Box pt={12}>{relatedPostsNode()}</Box>
               </VStack>
             </Box>
             <VStack
               spacing={8}
               pos="sticky"
               top={8}
-              h="100vh"
+              h="80vh"
               overflow="auto"
-              display={['none', 'none', 'none', 'block']}
+              display={["none", "none", "none", "block"]}
             >
               <TableOfContents source={post.body.raw} />
               <SocialShare title={post.title} />

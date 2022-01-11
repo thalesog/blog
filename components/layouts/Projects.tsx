@@ -1,22 +1,23 @@
 import {
   Box,
   Button,
+  Flex,
   Grid,
   Heading,
   Image,
   Input,
   Text,
   VStack,
-} from '@chakra-ui/react';
-import { FC, FormEvent, useState } from 'react';
-import Project from 'types/project';
+} from "@chakra-ui/react";
+import { FC, FormEvent, useState } from "react";
+import Project from "types/project";
 
 interface Props {
   projects: Project[];
 }
 
 const Projects: FC<Props> = ({ projects = [] }) => {
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState("");
   const sortedProjects = projects.filter((project: Project) =>
     project.title.toLowerCase().includes(searchQuery.toLowerCase())
   );
@@ -27,7 +28,7 @@ const Projects: FC<Props> = ({ projects = [] }) => {
         <Input
           bg="gray.800"
           color="white"
-          borderRadius="sm"
+          borderRadius="md"
           border="none"
           value={searchQuery}
           onChange={(e: FormEvent<HTMLInputElement>) =>
@@ -66,9 +67,11 @@ const Projects: FC<Props> = ({ projects = [] }) => {
 
   const ctaNode = () => {
     return (
-      <Button fontSize="sm" bg="gray.900" _hover={{}}>
-        View project
-      </Button>
+      <Flex w="full" alignItens="flex-end" justifyContent="flex-end">
+        <Button fontSize="sm" _hover={{}} variant="ghost">
+          View project
+        </Button>
+      </Flex>
     );
   };
 
@@ -84,21 +87,21 @@ const Projects: FC<Props> = ({ projects = [] }) => {
     return (
       <Grid
         templateColumns={[
-          'repeat(1, 1fr)',
-          'repeat(2, 1fr)',
-          'repeat(2, 1fr)',
-          'repeat(2, 1fr)',
+          "repeat(1, 1fr)",
+          "repeat(2, 1fr)",
+          "repeat(2, 1fr)",
+          "repeat(2, 1fr)",
         ]}
         gap={8}
       >
         {sortedProjects.map((project: Project, index: number) => {
           return (
-            <Box key={index} bg="gray.800" color="white" rounded="sm">
+            <Box key={index} bg="gray.800" color="white" rounded={"md"}>
               <a href={project.url} target="_blank" rel="noopener noreferrer">
                 <Box p={8}>
                   <VStack
                     spacing={4}
-                    minH={48}
+                    minH={32}
                     justifyContent="space-between"
                     align="left"
                   >
@@ -106,8 +109,8 @@ const Projects: FC<Props> = ({ projects = [] }) => {
                       {titleNode(project.title)}
                       {descriptionNode(project.description)}
                     </VStack>
-                    <Box>{ctaNode()}</Box>
                   </VStack>
+                  <Box>{ctaNode()}</Box>
                 </Box>
               </a>
             </Box>

@@ -1,8 +1,8 @@
-import { Post } from '.contentlayer/types';
-import Page from 'components/pages/posts/[slug]';
-import { getAllPosts, getCurrentPost, getNextPosts } from 'lib/get-posts-data';
-import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
-import pick from 'lodash/pick';
+import { Post } from ".contentlayer/types";
+import Page from "components/pages/PostsListTag";
+import { getAllPosts, getCurrentPost, getNextPosts } from "lib/get-posts-data";
+import { GetStaticPaths, GetStaticProps, NextPage } from "next";
+import pick from "lodash/pick";
 
 interface IProps {
   currentPost: Post;
@@ -29,10 +29,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const currentPost = getCurrentPost(params);
   const nextPosts = getNextPosts(params).map((posts) =>
-    pick(posts, ['date', 'description', 'title', 'slug'])
+    pick(posts, ["date", "description", "title", "slug"])
   );
-
-  console.log(currentPost);
 
   return {
     props: {

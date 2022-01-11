@@ -1,17 +1,17 @@
 const siteConfig = {
   details: {
-    title: 'Thales Ogliari',
-    tagLine: 'Sofware Engineer',
-    description: 'Thoughts about javascript and the react ecosystem.',
-    url: 'https://www.blog.thog.me',
+    title: "Thales Ogliari",
+    tagLine: "Sofware Engineer",
+    description: "Thoughts about my daily basis as a fullstack engineer.",
+    url: "https://www.blog.thog.me",
   },
   assets: {
-    avatar: '/images/common/seo-cover.png',
-    favicon: '/images/common/favicon.svg',
+    avatar: "/images/common/seo-cover.png",
+    favicon: "/images/common/favicon.svg",
   },
   socialLinks: {
-    twitter: '@thalesog',
-    github: '@thalesog',
+    twitter: "@thalesog",
+    github: "@thalesog",
   },
 };
 

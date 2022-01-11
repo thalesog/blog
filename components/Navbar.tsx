@@ -1,6 +1,6 @@
-import { Box, Button, HStack, Link as _Link, VStack } from '@chakra-ui/react';
-import { FC } from 'react';
-import { useRouter } from 'next/router';
+import { Box, Button, HStack, Link, VStack } from "@chakra-ui/react";
+import { FC } from "react";
+import { useRouter } from "next/router";
 
 interface NavLink {
   url: string;
@@ -9,20 +9,20 @@ interface NavLink {
 
 const LINKS = [
   {
-    url: '/',
-    title: 'Home',
+    url: "/",
+    title: "Home",
   },
   {
-    url: '/about',
-    title: 'About',
+    url: "/about",
+    title: "About",
   },
   {
-    url: '/posts',
-    title: 'Blog',
+    url: "/posts",
+    title: "Blog",
   },
   {
-    url: '/projects',
-    title: 'Projects',
+    url: "/projects",
+    title: "Projects",
   },
 ];
 
@@ -34,15 +34,21 @@ const Navbar: FC = () => {
         {[
           LINKS.map((link: NavLink) => {
             const isActive =
-              (link.url !== '/' && router.pathname.startsWith(link.url)) ||
-              link.url === router.pathname
-                ? 'solid'
-                : 'ghost';
+              link.url !== "/"
+                ? router.pathname.startsWith(link.url)
+                : link.url === router.pathname;
+            const isActiveProps = isActive
+              ? {
+                  bgColor: "gray.700",
+                }
+              : {};
             return (
               <Button
                 key={link.url}
-                variant={isActive}
+                variant="ghost"
                 onClick={() => router.push(link.url)}
+                _hover={{ bgColor: "gray.700" }}
+                {...isActiveProps}
               >
                 {link.title}
               </Button>
