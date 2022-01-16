@@ -1,4 +1,13 @@
-import { Avatar, Box, Grid, Heading, Text, VStack } from "@chakra-ui/react";
+import {
+  Avatar,
+  Box,
+  Flex,
+  Grid,
+  Heading,
+  Text,
+  VStack,
+} from "@chakra-ui/react";
+import LogoThog from "components/LogoThog";
 import React, { FC } from "react";
 
 const Page: FC = () => {
@@ -22,6 +31,16 @@ const Page: FC = () => {
             placeholder="blur"
           />
         </Box>
+        <Flex
+          p={8}
+          bgColor="white"
+          bgSize={"auto"}
+          rounded={"full"}
+          alignItems={"center"}
+          justifyContent={"center"}
+        >
+          <LogoThog fill={"black"} />
+        </Flex>
         <Box>
           <VStack spacing={2} align="left">
             <Heading as="h1" size="xl">
