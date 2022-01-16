@@ -114,7 +114,7 @@ const Page: NextPage<IProps> = ({ post, nextPosts }) => {
           description: post.description,
           images: [
             {
-              url: `https://cover-images.vercel.app/api?postTitle=${post.title}&postDescription=${post.description}&backgroundColor=1a202c&foregroundColor=fff&authorAvatar=${siteConfig.details.url}${siteConfig.assets.favicon}&authorName=${siteConfig.details.title}`,
+              url: `https://cover-images.vercel.app/api?postTitle=${post.title}&postDescription=${post.description}&backgroundColor=1a202c&foregroundColor=fff&authorAvatar=${siteConfig.details.url}&authorName=${siteConfig.details.title}`,
               width: 1200,
               height: 675,
               alt: post.title,

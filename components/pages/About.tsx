@@ -31,22 +31,8 @@ const Page: FC = () => {
             placeholder="blur"
           />
         </Box>
-        <Flex
-          p={8}
-          bgColor="white"
-          bgSize={"auto"}
-          rounded={"full"}
-          alignItems={"center"}
-          justifyContent={"center"}
-        >
-          <LogoThog fill={"black"} />
-        </Flex>
         <Box>
-          <VStack spacing={2} align="left">
-            <Heading as="h1" size="xl">
-              Thales Ogliari
-            </Heading>
-          </VStack>
+          <VStack spacing={2} align="left"></VStack>
         </Box>
       </VStack>
     );
@@ -55,22 +41,42 @@ const Page: FC = () => {
   const bioDescriptionNode = () => {
     return (
       <Box className="article">
-        <Text fontWeight="bold" textAlign="center">
-          Hi there, i{"'"}m Thales Ogliari, a developer from 🇧🇷
+        <Text textAlign="center">
+          <Heading fontWeight="bold" textAlign="center">
+            Hi 👋
+          </Heading>
+          <Heading as="h1" size="xl" textAlign="center">
+            I{"'"}m Thales Ogliari
+          </Heading>
+          a developer from Brazil 🇧🇷
         </Text>
         <Text>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ut
-          mattis libero. Donec eget fringilla orci, sed mattis justo. Aliquam
-          feugiat nisi nec ligula dapibus lobortis. Morbi mattis nulla non magna
-          pellentesque, condimentum gravida purus vehicula. Sed sed pellentesque
-          metus, vel ultrices augue. Morbi eu magna aliquam, viverra sem non,
-          molestie leo.
-        </Text>
-        <Text>
-          Etiam eget dapibus lorem. Vestibulum hendrerit arcu et sem venenatis,
-          sit amet fringilla elit ornare. In gravida, velit sit amet pulvinar
-          consectetur, ligula ipsum tempus ligula, sit amet imperdiet eros lacus
-          ut neque.
+          <Text fontWeight={"bold"}>The beginning</Text>
+          Since I was a child, always loved to disassemble electronics, format,
+          and customize computers to see how it{"'"}s done by the inside, over
+          time the toys begin to get bigger, and I started to work in an
+          internet provider.
+          <Text fontWeight={"bold"}>MKANET</Text>
+          In November 2014 I started to work in MKANET Telecom, first as a
+          Customer Support, then in the Network Operation Center, and finally
+          the CGR, or, Network Management Center (here in Brazil, the CGR runs
+          the entire network), where I learned much about how the networking
+          really works, using technologies like BGP, OSPF, MPLS, PPP, IPsec, and
+          others, we maintain a fiber optics/wireless ISP.
+          <Text fontWeight={"bold"}>The Switch</Text>
+          After 6 years as a network engineer, I received the opportunity to
+          change to the development realm, that is the place I work today as a
+          full-stack engineer in a company that provides technologies to banks
+          and fintech, including all the backend to the new Brazilian instant
+          payment method Pix.
+          <Text fontWeight={"bold"}>Current Stack</Text>
+          Today my main development language is JavaScript, using tools like
+          NodeJS, React, PostgreSQL, Docker, Terraform, I manage to build entire
+          applications, from the frontend to the deployment pipeline that runs
+          inside the repository.
+          <Text fontWeight={"bold"}>Daily Basis</Text>I think as a technology
+          passionate, my duty is always be in the search of innovation, using
+          development to create and improve products around the world.
         </Text>
       </Box>
     );
