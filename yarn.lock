@@ -868,10 +868,10 @@
   resolved "https://registry.yarnpkg.com/@fal-works/esbuild-plugin-global-externals/-/esbuild-plugin-global-externals-2.1.2.tgz#c05ed35ad82df8e6ac616c68b92c2282bd083ba4"
   integrity sha512-cEee/Z+I12mZcFJshKcCqC8tuX5hG3s+d+9nZ3LabqKF1vKdF41B92pJVCBggjAGORAeOzyyDDKrZwIkLffeOQ==
 
-"@fontsource/fira-code@^4.5.2":
-  version "4.5.2"
-  resolved "https://registry.yarnpkg.com/@fontsource/fira-code/-/fira-code-4.5.2.tgz#532ef612aa15b40970e696b3546348ed49512a86"
-  integrity sha512-wNUvcqmm1dZYTbJlkbFZL9Huu7p+Hwaa4CLNTPql3CG90Rh9dSi43wNg5AnVHxjAhWQOGlCpSrEswnnHu1CkxA==
+"@fontsource/fira-code@^4.5.11":
+  version "4.5.11"
+  resolved "https://registry.yarnpkg.com/@fontsource/fira-code/-/fira-code-4.5.11.tgz#5908672a5811c9df0f4d9d54524dd1d3d4036964"
+  integrity sha512-/o5QVmfPfkjlCGoWtrB66y4CtqeDPt9n8Ltz4VmFkLoO9Ov8L1thsbPbEQqKePUMJBVShnh9G448X36PCWlOYw==
 
 "@fontsource/inter@^4.5.4":
   version "4.5.4"
